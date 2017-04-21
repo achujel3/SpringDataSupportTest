@@ -1,15 +1,20 @@
 package org.datasupport.test.dao;
 
 import org.datasupport.test.model.Circle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
 public class JdbcDaoImpl {
 
+    @Autowired
+    private DataSource dataSource;
 
     public Circle getCircle(int circleId) {
 
@@ -18,9 +23,7 @@ public class JdbcDaoImpl {
         Circle circle = null;
 
         try {
-            String driver = "org.apache.derby.jdbc.ClientDriver";
-            Class.forName(driver).newInstance();
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/db");
+            conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM CIRCLE WHERE ID = ?");
             ps.setInt(1, circleId);
 
@@ -33,12 +36,6 @@ public class JdbcDaoImpl {
             rs.close();
             ps.close();
 
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -52,4 +49,11 @@ public class JdbcDaoImpl {
         return circle;
     }
 
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 }
