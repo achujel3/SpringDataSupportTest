@@ -15,4 +15,18 @@
         <property name="maxTotal" value="5" />
     </bean>
 
+    <bean id="hibernateDaoImpl" class="org.datasupport.test.dao.HibernateDaoImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="org.datasupport.test" />
+        <property name="hibernateProperties" >
+            <props>
+                <prop key="dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
+            </props>
+        </property>
+    </bean>
+
 </beans>

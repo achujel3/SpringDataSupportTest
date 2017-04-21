@@ -2,10 +2,14 @@ package org.datasupport.test.model;
 
 import org.springframework.util.StringUtils;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.List;
 
+@Entity
 public class Circle {
 
+    @Id
     private int id;
     private String name;
 
