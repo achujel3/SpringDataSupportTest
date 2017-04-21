@@ -17,10 +17,7 @@ public class JdbcDemo {
         System.out.println(jdbcDaoImpl.getCircleCount());
         System.out.println(jdbcDaoImpl.getCircleNameById(1));
         System.out.println(jdbcDaoImpl.getCircleById(1));
-        System.out.println("Circle list: ");
-        for (Circle circle : jdbcDaoImpl.getAllCircles()) {
-            System.out.println(circle);
-        }
+        Circle.toString(jdbcDaoImpl.getAllCircles());
 
 
 

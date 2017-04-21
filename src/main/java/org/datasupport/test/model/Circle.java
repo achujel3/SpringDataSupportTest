@@ -2,6 +2,8 @@ package org.datasupport.test.model;
 
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 public class Circle {
 
     private int id;
@@ -34,6 +36,13 @@ public class Circle {
 
     @Override
     public String toString() {
-        return "Circle (" + this.getId() + ", " + StringUtils.trimAllWhitespace(this.getName()) + ").";
+        return "Circle (" + this.getId() + ", " + StringUtils.trimTrailingWhitespace(this.getName()) + ").";
+    }
+
+    public static void toString(List<Circle> circles) {
+        System.out.println("List of circles: ");
+        for (Circle circle : circles) {
+            System.out.println(circle);
+        }
     }
 }
