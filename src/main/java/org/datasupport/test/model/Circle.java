@@ -1,5 +1,7 @@
 package org.datasupport.test.model;
 
+import org.springframework.util.StringUtils;
+
 public class Circle {
 
     private int id;
@@ -28,5 +30,10 @@ public class Circle {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle (" + this.getId() + ", " + StringUtils.trimAllWhitespace(this.getName()) + ").";
     }
 }

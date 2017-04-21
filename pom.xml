@@ -57,6 +57,12 @@
             <artifactId>derby</artifactId>
             <version>10.13.1.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>4.3.7.RELEASE</version>
+        </dependency>
 
 
     </dependencies>
