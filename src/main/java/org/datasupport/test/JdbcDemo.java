@@ -17,6 +17,8 @@ public class JdbcDemo {
         System.out.println(jdbcDaoImpl.getCircleCount());
         System.out.println(jdbcDaoImpl.getCircleNameById(1));
         System.out.println(jdbcDaoImpl.getCircleById(1));
+        jdbcDaoImpl.insertCircleTwo(new Circle(4, "Fourh circle"));
+        jdbcDaoImpl.insertCircleTwo(new Circle(5, "Fifth circle"));
         Circle.toString(jdbcDaoImpl.getAllCircles());
 
 
